@@ -28,7 +28,8 @@ module ShareNotify
     end
 
     def root
-      File.dirname(__dir__)
+      return File.dirname(__dir__) unless defined?(Rails)
+      Rails.root
     end
   end
 end
