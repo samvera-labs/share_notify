@@ -1,7 +1,7 @@
-require "share_notify/version"
-require "active_support"
+require 'share_notify/version'
+require 'active_support'
 require 'active_support/core_ext'
-require "httparty"
+require 'httparty'
 
 module ShareNotify
   autoload :API,            'share_notify/api'
@@ -16,7 +16,7 @@ module ShareNotify
       elsif value.is_a?(String)
         @config = YAML.load(File.read(value))
       else
-        raise InitializationError, "Unrecognized configuration: #{value.inspect}"
+        fail InitializationError, "Unrecognized configuration: #{value.inspect}"
       end
     end
 

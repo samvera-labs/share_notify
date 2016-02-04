@@ -3,5 +3,5 @@ require 'share_notify'
 require 'rspec/its'
 
 def fixture_path
-  File.join(ShareNotify.root, "spec", "fixtures")
+  File.join(ShareNotify.root, 'spec', 'fixtures')
 end

@@ -6,7 +6,7 @@ module ShareNotify
     # @param [String] uri that identifies the resource
     def initialize(uri)
       @uris = ShareUri.new(uri)
-      @providerUpdatedDateTime = Time.now.utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+      @providerUpdatedDateTime = Time.now.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
       @contributors = []
     end
 
@@ -21,7 +21,7 @@ module ShareNotify
     # @param [DateTime or Time] time object that can be formatted in to the correct representation
     def updated=(time)
       return unless time.respond_to?(:strftime)
-      @providerUpdatedDateTime = time.utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+      @providerUpdatedDateTime = time.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
     end
 
     # @param [String] version identifying the version of the resource

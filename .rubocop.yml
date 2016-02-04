@@ -1,0 +1,112 @@
+require: rubocop-rspec
+
+AllCops:
+  DisplayCopNames: true
+  Include:
+    - '**/Rakefile'
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+
+Metrics/PerceivedComplexity:
+  Exclude:
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Exclude:
+
+Metrics/ModuleLength:
+  Exclude:
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+Style/BlockEndNewline:
+  Exclude:
+    - 'spec/**/*'
+
+Style/MultilineBlockLayout:
+  Exclude:
+    - 'spec/**/*'
+
+Style/IndentationConsistency:
+  EnforcedStyle: rails
+
+Style/CollectionMethods:
+  PreferredMethods:
+    collect: 'map'
+    collect!: 'map!'
+    inject: 'reduce'
+    detect: 'find'
+    find_all: 'select'
+
+Style/WordArray:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/HashSyntax:
+  Exclude:
+
+Style/LineEndConcatenation:
+  Exclude:
+
+Style/PredicateName:
+  Exclude:
+
+Style/GlobalVars:
+  Exclude:
+    - 'spec/**/*'
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/ClassVars:
+  Exclude:
+
+Style/SignalException:
+  Enabled: false
+
+RSpec/ExampleWording:
+  CustomTransform:
+    be: is
+    have: has
+    not: does not
+    NOT: does NOT
+  IgnoredWords:
+    - only
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+
+Style/FileName:
+  Exclude:
+
+Style/VariableName:
+  Exclude:
+    - 'lib/share_notify/push_document.rb'

@@ -15,10 +15,10 @@ describe ShareNotify::Metadata do
 
   let(:object) { MockObject.new }
 
-  describe "#share_notified?" do
+  describe '#share_notified?' do
     subject { object.share_notified? }
-    context "when object is already in SHARE" do
-      let(:url) { "http://example.com/document1" }
+    context 'when object is already in SHARE' do
+      let(:url) { 'http://example.com/document1' }
       before { allow(object).to receive(:url).and_return(url) }
       specify do
         VCR.use_cassette('share_metadata', record: :none) do
@@ -26,8 +26,8 @@ describe ShareNotify::Metadata do
         end
       end
     end
-    context "when object is not in SHARE" do
-      let(:url) { "http://example.com/bogusDoc" }
+    context 'when object is not in SHARE' do
+      let(:url) { 'http://example.com/bogusDoc' }
       before { allow(object).to receive(:url).and_return(url) }
       specify do
         VCR.use_cassette('share_metadata', record: :none) do
