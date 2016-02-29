@@ -48,6 +48,75 @@ describe ShareNotify::PushDocument do
     its(:version) { is_expected.to eq(versionId: 'someID') }
   end
 
+  describe '#description' do
+    subject do
+      obj = described_class.new(uri)
+      obj.description = 'some description'
+      obj
+    end
+    its(:description) { is_expected.to eq('some description') }
+  end
+
+  describe '#publisher' do
+    context 'with a name' do
+      subject do
+        obj = described_class.new(uri)
+        obj.publisher = { name: 'myname', uri: 'http://example.com' }
+        obj
+      end
+      its(:publisher) { is_expected.to eq(name: 'myname', uri: 'http://example.com') }
+    end
+
+    context 'without a name' do
+      subject do
+        obj = described_class.new(uri)
+        obj.publisher = { uri: 'http://example.com' }
+        obj
+      end
+      its(:publisher) { is_expected.to be_nil }
+    end
+  end
+
+  describe '#languages' do
+    context '@param is an array type' do
+      subject do
+        obj = described_class.new(uri)
+        obj.languages = ['English']
+        obj
+      end
+      its(:languages) { is_expected.to eq(['English']) }
+    end
+
+    context '@param is not an array type' do
+      subject do
+        obj = described_class.new(uri)
+        obj.languages = 'English'
+        obj
+      end
+      its(:languages) { is_expected.to be_nil }
+    end
+  end
+
+  describe '#tags' do
+    context '@param is an array type' do
+      subject do
+        obj = described_class.new(uri)
+        obj.tags = ['tag1', 'tag2']
+        obj
+      end
+      its(:tags) { is_expected.to eq(['tag1', 'tag2']) }
+    end
+
+    context '@param is not an array type' do
+      subject do
+        obj = described_class.new(uri)
+        obj.languages = 'tag1'
+        obj
+      end
+      its(:tags) { is_expected.to be_nil }
+    end
+  end
+
   describe '#to_share' do
     let(:example) do
       doc = described_class.new('http://example.com/document1')

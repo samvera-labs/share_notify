@@ -1,7 +1,7 @@
 module ShareNotify
   class PushDocument
-    attr_reader :uris, :contributors, :providerUpdatedDateTime, :version
-    attr_accessor :title
+    attr_reader :uris, :contributors, :providerUpdatedDateTime, :version, :publisher, :languages, :tags
+    attr_accessor :title, :description
 
     # @param [String] uri that identifies the resource
     def initialize(uri)
@@ -33,6 +33,22 @@ module ShareNotify
     def add_contributor(contributor)
       return false unless contributor.keys.include?(:name)
       @contributors << contributor
+    end
+
+    # @param [Hash] publisher containing required keys for publisher
+    def publisher=(publisher)
+      return false unless publisher.keys.include?(:name)
+      @publisher = publisher
+    end
+
+    def languages=(languages)
+      return false unless languages.class == Array
+      @languages = languages
+    end
+
+    def tags=(tags)
+      return false unless tags.class == Array
+      @tags = tags
     end
 
     def to_share
