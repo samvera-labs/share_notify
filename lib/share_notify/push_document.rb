@@ -4,9 +4,10 @@ module ShareNotify
     attr_accessor :title, :description
 
     # @param [String] uri that identifies the resource
-    def initialize(uri)
+    def initialize(uri, datetime = nil)
+      datetime = (datetime.is_a?(Time) || datetime.is_a?(DateTime)) ? datetime : Time.now
       @uris = ShareUri.new(uri)
-      @providerUpdatedDateTime = Time.now.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
+      @providerUpdatedDateTime = datetime.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
       @contributors = []
     end
 
@@ -42,12 +43,12 @@ module ShareNotify
     end
 
     def languages=(languages)
-      return false unless languages.class == Array
+      return false unless languages.is_a?(Array)
       @languages = languages
     end
 
     def tags=(tags)
-      return false unless tags.class == Array
+      return false unless tags.is_a?(Array)
       @tags = tags
     end
 
