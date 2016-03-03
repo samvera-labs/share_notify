@@ -1,12 +1,13 @@
 module ShareNotify
   class PushDocument
-    attr_reader :uris, :contributors, :providerUpdatedDateTime, :version
-    attr_accessor :title
+    attr_reader :uris, :contributors, :providerUpdatedDateTime, :version, :publisher, :languages, :tags
+    attr_accessor :title, :description
 
     # @param [String] uri that identifies the resource
-    def initialize(uri)
+    def initialize(uri, datetime = nil)
+      datetime = (datetime.is_a?(Time) || datetime.is_a?(DateTime)) ? datetime : Time.now
       @uris = ShareUri.new(uri)
-      @providerUpdatedDateTime = Time.now.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
+      @providerUpdatedDateTime = datetime.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
       @contributors = []
     end
 
@@ -33,6 +34,22 @@ module ShareNotify
     def add_contributor(contributor)
       return false unless contributor.keys.include?(:name)
       @contributors << contributor
+    end
+
+    # @param [Hash] publisher containing required keys for publisher
+    def publisher=(publisher)
+      return false unless publisher.keys.include?(:name)
+      @publisher = publisher
+    end
+
+    def languages=(languages)
+      return false unless languages.is_a?(Array)
+      @languages = languages
+    end
+
+    def tags=(tags)
+      return false unless tags.is_a?(Array)
+      @tags = tags
     end
 
     def to_share
