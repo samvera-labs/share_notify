@@ -4,6 +4,6 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'byebug'
-gem 'rubocop', require: false
+gem 'rubocop', "~> 0.37.2", require: false
 gem 'rubocop-rspec', require: false
 
