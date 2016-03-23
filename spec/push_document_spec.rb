@@ -25,16 +25,6 @@ describe ShareNotify::PushDocument do
     end
   end
 
-  describe '@providerUpdatedDateTime' do
-    subject do
-      valid = described_class.new(uri)
-      valid.add_contributor(name: 'Job', email: 'joe@joe.com')
-      valid.title = 'Some title'
-      valid
-    end
-    it { is_expected.to be_valid }
-  end
-
   describe 'a valid document' do
     subject do
       valid = described_class.new(uri)
