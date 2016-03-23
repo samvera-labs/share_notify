@@ -1,0 +1,23 @@
+{
+  "jsonData": {
+    "contributors": [
+      { "name": "Roger Movies Ebert", "email": "rogerebert@example.com" },
+      { "name": "Roger Madness Ebert"}
+    ],
+    "providerUpdatedDateTime": "2014-12-12T00:00:00Z",
+    "title": "Interesting research",
+    "version": { "versionId": "someID" },
+    "uris": {
+      "canonicalUri": "http://example.com/document1",
+      "providerUris": [ "http://example.com/document1" ]
+    },
+    "otherProperties": [
+      {
+        "name": "status",
+        "properties": {
+          "status": ["deleted"]
+        }
+      }
+    ]
+  }
+}

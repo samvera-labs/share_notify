@@ -21,11 +21,21 @@ describe ShareNotify::API do
   end
 
   describe '#post' do
-    let(:post_data) { File.read(File.join(fixture_path, 'share.json')) }
     subject { described_class.new.post(post_data) }
-    it 'is successful' do
-      VCR.use_cassette('share_notify', record: :none) do
-        expect(subject.code).to eq(201)
+    context 'when creating a new document' do
+      let(:post_data) { File.read(File.join(fixture_path, 'share.json')) }
+      it 'is successful' do
+        VCR.use_cassette('share_notify', record: :none) do
+          expect(subject.code).to eq(201)
+        end
+      end
+    end
+    context 'when deleting an existing document' do
+      let(:post_data) { File.read(File.join(fixture_path, 'share_delete.json')) }
+      it 'is successful' do
+        VCR.use_cassette('share_notify_delete', record: :none) do
+          expect(subject.code).to eq(201)
+        end
       end
     end
   end
