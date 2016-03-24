@@ -8,6 +8,7 @@ module ShareNotify
   autoload :Metadata,       'share_notify/metadata'
   autoload :PushDocument,   'share_notify/push_document'
   autoload :SearchResponse, 'share_notify/search_response'
+  autoload :NotificationQueryService, 'share_notify/notification_query_service'
 
   class << self
     def configure(value)
