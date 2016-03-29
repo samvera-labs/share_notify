@@ -1,5 +1,9 @@
 # ShareNotify
 
+[![Gem Version](https://badge.fury.io/rb/share_notify.svg)](https://badge.fury.io/rb/share_notify)
+[![Build Status](https://api.travis-ci.org/projecthydra-labs/share_notify.png?branch=master)](https://travis-ci.org/projecthydra-labs/share_notify)
+[![Apache 2.0 License](http://img.shields.io/badge/APACHE2-license-blue.svg)](./LICENSE)
+
 Provides basic tools for creating documents to send to SHARENotify's Push API as well as query for documents
 using SHARE Search.
 
