@@ -1,6 +1,13 @@
 module ShareNotify
   class PushDocument
-    attr_reader :uris, :contributors, :providerUpdatedDateTime, :version, :publisher, :languages, :tags
+    attr_reader :uris,
+                :contributors,
+                :providerUpdatedDateTime,
+                :version,
+                :publisher,
+                :languages,
+                :tags,
+                :otherProperties
     attr_accessor :title, :description
 
     # @param [String] uri that identifies the resource
@@ -42,11 +49,13 @@ module ShareNotify
       @publisher = publisher
     end
 
+    # @param [Array<String>] languages list of languages
     def languages=(languages)
       return false unless languages.is_a?(Array)
       @languages = languages
     end
 
+    # @param [Array<String>] tags list of tags
     def tags=(tags)
       return false unless tags.is_a?(Array)
       @tags = tags
@@ -56,12 +65,25 @@ module ShareNotify
       { jsonData: self }
     end
 
+    def delete
+      @otherProperties = [OtherProperty.new("status", status: ["deleted"])]
+    end
+
     class ShareUri
       attr_reader :canonicalUri, :providerUris
 
       def initialize(uri)
         @canonicalUri = uri
         @providerUris = [uri]
+      end
+    end
+
+    class OtherProperty
+      attr_reader :name, :property
+
+      def initialize(*args)
+        @name = args.shift
+        @properties = args.shift
       end
     end
   end

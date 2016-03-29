@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://staging.osf.io/api/v1/share/data
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "jsonData": {
+            "contributors": [
+              { "name": "Roger Movies Ebert", "email": "rogerebert@example.com" },
+              { "name": "Roger Madness Ebert"}
+            ],
+            "providerUpdatedDateTime": "2014-12-12T00:00:00Z",
+            "title": "Interesting research",
+            "version": { "versionId": "someID" },
+            "uris": {
+              "canonicalUri": "http://example.com/document1",
+              "providerUris": [ "http://example.com/document1" ]
+            },
+            "otherProperties": [
+              {
+                "name": "status",
+                "properties": {
+                  "status": ["deleted"]
+                }
+              }
+            ]
+          }
+        }
+    headers:
+      Authorization:
+      - Token SECRET_TOKEN
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Date:
+      - Wed, 23 Mar 2016 14:39:14 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept, Cookie
+      X-Frame-Options:
+      - SAMEORIGIN
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+    body:
+      encoding: UTF-8
+      string: '{"id":1080,"updated":"2016-03-23T14:39:14.603181Z","docID":"http://example.com/document1","source":"scholarsphere","jsonData":{"contributors":[{"name":"Roger
+        Movies Ebert","email":"rogerebert@example.com"},{"name":"Roger Madness Ebert"}],"title":"Interesting
+        research","shareProperties":{"source":"scholarsphere","docID":"http://example.com/document1"},"otherProperties":[{"name":"status","properties":{"status":["deleted"]}}],"version":{"versionId":"someID"},"providerUpdatedDateTime":"2014-12-12T00:00:00Z","uris":{"canonicalUri":"http://example.com/document1","providerUris":["http://example.com/document1"]}},"status":"deleted"}'
+    http_version: 
+  recorded_at: Wed, 23 Mar 2016 14:39:14 GMT
+recorded_with: VCR 3.0.1

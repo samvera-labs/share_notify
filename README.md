@@ -45,6 +45,18 @@ Then send the document to Share using the `API` class:
     api = ShareNotify::API.new
     api.post(document.to_share.to_json)
 
+### Deleting Data
+
+Same as above, but adding an additional "delete" property informs the Share API that this
+document should be delete from the Search API:
+
+    >  document = ShareNotify::PushDocument.new("http://my.document.id/1234")
+    >  document.title = "Some Title"
+    >  document.add_contributor(name: "My Name", email: "myemail@example.com")
+    >  document.delete
+    >  api = ShareNotify::API.new
+    >  api.post(document.to_share.to_json)
+
 ### Querying
 
 You can query Share's Search API using the terms outlined in <https://osf.io/dajtq/wiki/SHARE%20Search>
@@ -71,7 +83,7 @@ if the document is already present in ShareNotify's Search API.
     => true
 
 Note: It may take 24 hours or more before documents that have been initially pushed to Share will appear
-in the Search API.
+in or be deleted from the Search API.
 
 ## Contributing
 
