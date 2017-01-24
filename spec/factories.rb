@@ -31,4 +31,20 @@ FactoryGirl.define do
       end
     end
   end
+
+  # factory :document_v2, class: ShareNotify::Client::GraphNode do
+  #   initialize_with {new ("CreativeWork", title: "alice tests", 
+  #                         identifiers:[initialize_with { new("WorkIdentifier", uri: "http://example.com/alice")}]
+  #                         )
+  #                   }
+
+  #   factory :workIdentifier_node do
+  #     initialize_with { new('WorkIdentifier', uri: 'http://example.com/alice') }
+  #   end
+  # end
+
+  # factory :document, class: ShareNotify::Client::Graph do
+  #   uri "http://example.com/fake-uri"
+  #   initialize_with { new(uri) }
+  # end
 end

@@ -1,3 +1,5 @@
+require 'net/http'
+
 module ShareNotify
   class PushDocument
     attr_reader :uris,
@@ -16,6 +18,7 @@ module ShareNotify
       @uris = ShareUri.new(uri)
       @providerUpdatedDateTime = datetime.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
       @contributors = []
+
     end
 
     def valid?
@@ -60,7 +63,7 @@ module ShareNotify
       return false unless tags.is_a?(Array)
       @tags = tags
     end
-
+    
     def to_share
       { jsonData: self }
     end
