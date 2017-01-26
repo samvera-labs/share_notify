@@ -2,7 +2,3 @@ language: ruby
 cache: bundler
 rvm:
   - 2.3.0
-notifications:
-  irc:
-    channels:
-      - "irc.freenode.org#projecthydra"
