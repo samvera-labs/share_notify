@@ -32,19 +32,13 @@ FactoryGirl.define do
     end
   end
 
-  # factory :document_v2, class: ShareNotify::Client::GraphNode do
-  #   initialize_with {new ("CreativeWork", title: "alice tests", 
-  #                         identifiers:[initialize_with { new("WorkIdentifier", uri: "http://example.com/alice")}]
-  #                         )
-  #                   }
-
-  #   factory :workIdentifier_node do
-  #     initialize_with { new('WorkIdentifier', uri: 'http://example.com/alice') }
-  #   end
-  # end
-
-  # factory :document, class: ShareNotify::Client::Graph do
-  #   uri "http://example.com/fake-uri"
-  #   initialize_with { new(uri) }
-  # end
+  factory :document_v2, class: ShareNotify::Graph do
+    push_doc = ShareNotify::PushDocument.new("http://example.com/", DateTime.new(1990, 12, 12, 12, 12, 12, '+5'))
+    push_doc.title = "V2 title"
+    push_doc.languages = ["English"]
+    push_doc.tags =  ["tag1", "tag2"]
+    push_doc.related_agents = [{agent_type: "creator", type: "person", name: "person name" }]
+    push_doc.add_contributor(name: 'Roger Madness Ebert')
+    initialize_with { new(push_doc) }
+  end
 end

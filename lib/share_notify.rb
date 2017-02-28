@@ -9,7 +9,7 @@ module ShareNotify
   autoload :PushDocument,   'share_notify/push_document'
   autoload :SearchResponse, 'share_notify/search_response'
   autoload :NotificationQueryService, 'share_notify/notification_query_service'
-  autoload :Client,            'share_notify/client'
+  autoload :Graph,            'share_notify/graph'
 
   class << self
     def configure(value)

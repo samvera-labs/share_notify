@@ -9,8 +9,13 @@ module ShareNotify
                 :publisher,
                 :languages,
                 :tags,
+                :related_agents,
                 :otherProperties
-    attr_accessor :title, :description
+    attr_accessor :title, 
+                  :description,
+                  :type, 
+                  :date_published,
+                  :rights
 
     # @param [String] uri that identifies the resource
     def initialize(uri, datetime = nil)
@@ -62,6 +67,15 @@ module ShareNotify
     def tags=(tags)
       return false unless tags.is_a?(Array)
       @tags = tags
+    end
+
+    # @param [Array<String>] related_agents list of agents
+    def related_agents=(related_agents)
+      return false unless related_agents.is_a?(Array)
+      related_agents.each do |agent|
+        return false unless agent.keys.include?(:agent_type) && agent.keys.include?(:type)
+      end
+      @related_agents = related_agents
     end
     
     def to_share
