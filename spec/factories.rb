@@ -36,8 +36,8 @@ FactoryGirl.define do
     push_doc = ShareNotify::PushDocument.new("http://example.com/", DateTime.new(1990, 12, 12, 12, 12, 12, '+5'))
     push_doc.title = "V2 title"
     push_doc.languages = ["English"]
-    push_doc.tags =  ["tag1", "tag2"]
-    push_doc.related_agents = [{agent_type: "creator", type: "person", name: "person name" }]
+    push_doc.tags = ["tag1", "tag2"]
+    push_doc.related_agents = [{ agent_type: "creator", type: "person", name: "person name" }]
     push_doc.add_contributor(name: 'Roger Madness Ebert')
     initialize_with { new(push_doc) }
   end

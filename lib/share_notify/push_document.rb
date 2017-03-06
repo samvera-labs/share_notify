@@ -11,9 +11,9 @@ module ShareNotify
                 :tags,
                 :related_agents,
                 :otherProperties
-    attr_accessor :title, 
+    attr_accessor :title,
                   :description,
-                  :type, 
+                  :type,
                   :date_published,
                   :rights
 
@@ -23,7 +23,6 @@ module ShareNotify
       @uris = ShareUri.new(uri)
       @providerUpdatedDateTime = datetime.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
       @contributors = []
-
     end
 
     def valid?
@@ -77,7 +76,7 @@ module ShareNotify
       end
       @related_agents = related_agents
     end
-    
+
     def to_share
       { jsonData: self }
     end

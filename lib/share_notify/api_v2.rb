@@ -1,4 +1,4 @@
-class ShareNotify::API_V2
+class ShareNotify::ApiV2
   include HTTParty
 
   # Uncomment next line if you want the api calls to be written to STDOUT

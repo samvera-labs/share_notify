@@ -78,31 +78,37 @@ describe ShareNotify::PushDocument do
 
   describe '#related_agents' do
     context '@param is an array and item includs agent_type and type ' do
-      related_agents = [{agent_type: "contributor", type: "organization", name: "organization name"},
-                        {agent_type: "creator", type: "person", name: "person name"}]
+      related_agents = [
+        { agent_type: "contributor", type: "organization", name: "organization name" },
+        { agent_type: "creator", type: "person", name: "person name" }
+      ]
 
-      subject { build(:document, related_agents: related_agents)}
+      subject { build(:document, related_agents: related_agents) }
       its(:related_agents) { is_expected.to eq(related_agents) }
     end
 
     context '@param is an array but item does not includs agent_type and type ' do
-      related_agents = [{agent_type: "contributor", name: "contributor name"},
-                        {agent_type: "creator", name: "creator name"}]
+      related_agents = [
+        { agent_type: "contributor", name: "contributor name" },
+        { agent_type: "creator", name: "creator name" }
+      ]
 
-      subject { build(:document, related_agents: related_agents)}
+      subject { build(:document, related_agents: related_agents) }
       its(:related_agents) { is_expected.to be_nil }
     end
 
     context '@param is an array' do
-      related_agents = [{agent_type: "contributor", type: "person", name: "contributor name"},
-                        {agent_type: "creator", type: "person", name: "creator name"}]
+      related_agents = [
+        { agent_type: "contributor", type: "person", name: "contributor name" },
+        { agent_type: "creator", type: "person", name: "creator name" }
+      ]
 
-      subject { build(:document, related_agents: related_agents)}
+      subject { build(:document, related_agents: related_agents) }
       its(:related_agents) { is_expected.to eq(related_agents) }
     end
 
     context '@param is not an array' do
-      subject { build(:document, tags: {agent_type: "contributor", type: "person"})}
+      subject { build(:document, tags: { agent_type: "contributor", type: "person" }) }
       its(:related_agents) { is_expected.to be_nil }
     end
   end
@@ -118,7 +124,7 @@ describe ShareNotify::PushDocument do
       its(:tags) { is_expected.to be_nil }
     end
   end
-  
+
   context 'with complete documents' do
     subject { JSON.parse(example.to_share.to_json) }
     describe '#to_share' do
