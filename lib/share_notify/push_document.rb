@@ -19,7 +19,7 @@ module ShareNotify
 
     # @param [String] uri that identifies the resource
     def initialize(uri, datetime = nil)
-      datetime = (datetime.is_a?(Time) || datetime.is_a?(DateTime)) ? datetime : Time.now
+      datetime = datetime.is_a?(Time) || datetime.is_a?(DateTime) ? datetime : Time.now
       @uris = ShareUri.new(uri)
       @providerUpdatedDateTime = datetime.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
       @contributors = []

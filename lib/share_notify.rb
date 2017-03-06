@@ -16,7 +16,7 @@ module ShareNotify
       if value.nil? || value.is_a?(Hash)
         @config = value
       elsif value.is_a?(String)
-        @config = YAML.load(File.read(value))
+        @config = YAML.safe_load(File.read(value))
       else
         fail InitializationError, "Unrecognized configuration: #{value.inspect}"
       end
