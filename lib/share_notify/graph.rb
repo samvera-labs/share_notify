@@ -1,6 +1,3 @@
-require 'net/http'
-require 'securerandom'
-
 module ShareNotify
   class Graph
 
@@ -9,7 +6,7 @@ module ShareNotify
                 :push_doc
 
     def initialize(push_doc)
-      @id = '_:' + calc_id("id")
+      @id = calc_id("id")
       @type = push_doc.type || 'CreativeWork'
       @push_doc = push_doc
     end
@@ -22,29 +19,29 @@ module ShareNotify
     def creative_work
       # @id and @type are required fields which is declared in initialize
       creative_work = type_id
-      add_property(creative_work, "rights", push_doc.rights)
-      add_property(creative_work, "title", push_doc.title)
-      add_property(creative_work, "description", push_doc.description)
+      add_property(creative_work, :rights, push_doc.rights)
+      add_property(creative_work, :title, push_doc.title)
+      add_property(creative_work, :description, push_doc.description)
       #convert v1 array to v2 string type for laguage
-      add_language_property(creative_work, "language", push_doc.languages)
-      add_property(creative_work, "date_published", push_doc.date_published)
-      add_property(creative_work, "date_updated", push_doc.providerUpdatedDateTime)
+      add_language_property(creative_work, :language, push_doc.languages)
+      add_property(creative_work, :date_published, push_doc.date_published)
+      add_property(creative_work, :date_updated, push_doc.providerUpdatedDateTime)
 
       [creative_work]
     end
 
     def related_agents
       return [] if push_doc.related_agents.nil?
-      
-      agent_results =[]
+
+      agent_results = []
       push_doc.related_agents.each do |agent|
           agent_id = calc_id("agent|" + agent[:type])
           agent_type = agent[:agent_type]
           agent_type_id = calc_id("agent_type|" + agent_type)
-           
-          agent_result = [ 
-            agent.except(:agent_type).merge({ id: agent_id }),
-            type_id(agent_type_id, agent_type).merge({ "agent" => type_id(agent_id, agent[:type]) }).merge(creative_work_hash)]
+
+          agent_result = [
+            type_id(agent_id, agent[:type]).merge(agent.except(:agent_type, :type)),
+            type_id(agent_type_id, agent_type).merge({ "agent": type_id(agent_id, agent[:type]) }).merge(creative_work_hash)]
           agent_results << agent_result
       end
       agent_results.flatten
@@ -53,7 +50,7 @@ module ShareNotify
     def workidentifer
       uri = push_doc.uris.canonicalUri
       uri_id = calc_id("workidentifier|#{ uri }")
-      uris = type_id(uri_id, "WorkIdentifier").merge({ "uri" => uri }).merge(creative_work_hash)
+      uris = type_id(uri_id, "WorkIdentifier").merge({ "uri": uri }).merge(creative_work_hash)
     end
 
     def tags
@@ -65,8 +62,8 @@ module ShareNotify
           throughtags_id = calc_id("throughtags|" + tag)
 
           tag_result = [
-           type_id(tag_id, "Tag").merge({ "title" => tag }),
-           type_id(throughtags_id, "ThroughTags").merge({ "tag" => type_id(tag_id, "Tag") }).merge(creative_work_hash)]
+           type_id(tag_id, "Tag").merge({ "name": tag }),
+           type_id(throughtags_id, "ThroughTags").merge({ "tag": type_id(tag_id, "Tag") }).merge(creative_work_hash)]
           tags_results << tag_result
       end
       tags_results.flatten
@@ -78,13 +75,15 @@ module ShareNotify
     end
 
     def creative_work_hash
-      { "creative_work" => type_id }
+      { creative_work: type_id }
     end
 
     def except(*keys)
       dup.except!(*keys)
     end
 
+    # calc_id returns the "blank node id" for the given name.
+    # A hash function is used, so a given name will always return the same id.
     def calc_id(name)
       "_:#{ Digest::MD5.hexdigest(name) }"
     end
@@ -98,4 +97,3 @@ module ShareNotify
     end
   end
 end
-  

@@ -3,65 +3,76 @@
     "type": "NormalizedData",
     "attributes": {
       "data": {
-        "@graph": [{
-          "@id": "_:xxxxx",
-          "@type": "CreativeWork",
-          "title": "V2 title",
-          "language": "English",
-          "date_updated": "1990-12-12T07:12:12Z"
-        }, {
-          "@id": "_:xxxxx",
-          "@type": "WorkIdentifier",
-          "uri": "http://example.com/",
-          "creative_work": {
-            "@id": "_:xxxxx",
-            "@type": "CreativeWork"
-          }
-        }, {
-          "@id": "_:xxxxx",
-          "@type": "Tag",
-          "title": "tag1"
-        }, {
-          "@id": "_:xxxxx",
-          "@type": "ThroughTags",
-          "tag": {
-            "@id": "_:xxxxx",
-            "@type": "Tag"
+        "@graph": [
+          {
+            "@id": "_:b80bb7740288fda1f201890375a60c8f",
+            "@type": "CreativeWork",
+            "title": "V2 title",
+            "language": "English",
+            "date_updated": "1990-12-12T07:12:12Z"
           },
-          "creative_work": {
-            "@id": "_:xxxxx",
-            "@type": "CreativeWork"
-          }
-        },{
-          "@id": "_:xxxxx",
-          "@type": "Tag",
-          "title": "tag2"
-        }, {
-          "@id": "_:xxxxx",
-          "@type": "ThroughTags",
-          "tag": {
-            "@id": "_:xxxxx",
-            "@type": "Tag"
+          {
+            "@id": "_:da8fe8fc47e18b435d6fe52ce7376f2d",
+            "@type": "WorkIdentifier",
+            "uri": "http://example.com/",
+            "creative_work": {
+              "@id": "_:b80bb7740288fda1f201890375a60c8f",
+              "@type": "CreativeWork"
+            }
           },
-          "creative_work": {
-            "@id": "_:xxxxx",
-            "@type": "CreativeWork"
-          }
-        },
-        {
-          "type": "person",
-          "name": "person name",
-          "id": "_:xxxxx"
-        }, {
-          "@id": "_:xxxxx",
-          "@type": "creator",
-          "agent": {
-            "@id": "_:xxxxx",
-            "@type": "person"
+          {
+            "@id": "_:e32f94dc18d0c5b62f364c177484172a",
+            "@type": "Tag",
+            "name": "tag1"
           },
-          "creative_work": {
-            "@id": "_:xxxxx",
-            "@type": "CreativeWork"
+          {
+            "@id": "_:c61ef97754a0d8570dc5077e1bc270fa",
+            "@type": "ThroughTags",
+            "tag": {
+              "@id": "_:e32f94dc18d0c5b62f364c177484172a",
+              "@type": "Tag"
+            },
+            "creative_work": {
+              "@id": "_:b80bb7740288fda1f201890375a60c8f",
+              "@type": "CreativeWork"
+            }
+          },
+          {
+            "@id": "_:15a70ba2e0026a8eee02a812f81e1c31",
+            "@type": "Tag",
+            "name": "tag2"
+          },
+          {
+            "@id": "_:b14b75726b0e1c461f6ed020e914b8c8",
+            "@type": "ThroughTags",
+            "tag": {
+              "@id": "_:15a70ba2e0026a8eee02a812f81e1c31",
+              "@type": "Tag"
+            },
+            "creative_work": {
+              "@id": "_:b80bb7740288fda1f201890375a60c8f",
+              "@type": "CreativeWork"
+            }
+          },
+          {
+            "@type": "person",
+            "name": "person name",
+            "@id": "_:0322c6196c72906c4c0d30904f257cb3"
+          },
+          {
+            "@id": "_:8aa0b2df8dcb13c05c31c6a3460f991b",
+            "@type": "creator",
+            "agent": {
+              "@id": "_:0322c6196c72906c4c0d30904f257cb3",
+              "@type": "person"
+            },
+            "creative_work": {
+              "@id": "_:b80bb7740288fda1f201890375a60c8f",
+              "@type": "CreativeWork"
+            }
           }
-        }]
-}}}}
+        ]
+      }
+    }
+  }
+}

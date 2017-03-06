@@ -1,7 +1,7 @@
 class ShareNotify::API_V2
   include HTTParty
 
-  # Uncomment this line if you want the api calls to be written to STDOUT
+  # Uncomment next line if you want the api calls to be written to STDOUT
   # debug_output $stdout
 
   attr_reader :headers, :response
