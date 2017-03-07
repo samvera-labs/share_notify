@@ -72,7 +72,7 @@ module ShareNotify
     def related_agents=(related_agents)
       return false unless related_agents.is_a?(Array)
       related_agents.each do |agent|
-        return false unless agent.keys.include?(:agent_type) && agent.keys.include?(:type)
+        return false unless agent.keys.include?(:agent_type) && agent.keys.include?(:type)&& agent.keys.include?(:name)
       end
       @related_agents = related_agents
     end

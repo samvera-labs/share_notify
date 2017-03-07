@@ -5,7 +5,7 @@ module ShareNotify
                 :push_doc
 
     def initialize(push_doc)
-      @id = calc_id("id") # should this be something besides the string "id"?
+      @id = calc_id("creativework|" + push_doc.title)
       @type = push_doc.type || 'CreativeWork'
       @push_doc = push_doc
     end
@@ -34,13 +34,12 @@ module ShareNotify
 
       agent_results = []
       push_doc.related_agents.each do |agent|
-        agent_id = calc_id("agent|" + agent[:type])
-        agent_type = agent[:agent_type]
-        agent_type_id = calc_id("agent_type|" + agent_type)
+        agent_id = calc_id("agent|" + agent[:name])
+        agent_type_id = calc_id("agent_type|" + @id + agent[:name])
 
         agent_result = [
           type_id(agent_id, agent[:type]).merge(agent.except(:agent_type, :type)),
-          type_id(agent_type_id, agent_type).merge(agent: type_id(agent_id, agent[:type])).merge(creative_work_hash)
+          type_id(agent_type_id, agent[:agent_type]).merge(agent: type_id(agent_id, agent[:type])).merge(creative_work_hash)
         ]
         agent_results << agent_result
       end
@@ -59,7 +58,7 @@ module ShareNotify
       tags_results = []
       push_doc.tags.each do |tag|
         tag_id = calc_id("tag|" + tag)
-        throughtags_id = calc_id("throughtags|" + tag)
+        throughtags_id = calc_id("throughtags|" + @id + tag)
 
         tag_result = [
           type_id(tag_id, "Tag").merge(name: tag),

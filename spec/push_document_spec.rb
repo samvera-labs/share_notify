@@ -77,7 +77,7 @@ describe ShareNotify::PushDocument do
   end
 
   describe '#related_agents' do
-    context '@param is an array and item includs agent_type and type ' do
+    context '@param is an array and item includs agent_type,type and name ' do
       related_agents = [
         { agent_type: "contributor", type: "organization", name: "organization name" },
         { agent_type: "creator", type: "person", name: "person name" }
@@ -87,7 +87,7 @@ describe ShareNotify::PushDocument do
       its(:related_agents) { is_expected.to eq(related_agents) }
     end
 
-    context '@param is an array but item does not includs agent_type and type ' do
+    context '@param is an array but item does not includ type ' do
       related_agents = [
         { agent_type: "contributor", name: "contributor name" },
         { agent_type: "creator", name: "creator name" }
@@ -95,16 +95,6 @@ describe ShareNotify::PushDocument do
 
       subject { build(:document, related_agents: related_agents) }
       its(:related_agents) { is_expected.to be_nil }
-    end
-
-    context '@param is an array' do
-      related_agents = [
-        { agent_type: "contributor", type: "person", name: "contributor name" },
-        { agent_type: "creator", type: "person", name: "creator name" }
-      ]
-
-      subject { build(:document, related_agents: related_agents) }
-      its(:related_agents) { is_expected.to eq(related_agents) }
     end
 
     context '@param is not an array' do

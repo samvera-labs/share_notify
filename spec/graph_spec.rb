@@ -33,18 +33,18 @@ describe ShareNotify::Graph do
       sub = build(:document_v2)
       results = [
         {
-          :@type => "person",
-          name: "person name",
-          :@id => "_:0322c6196c72906c4c0d30904f257cb3"
+          :@id=>"_:0e984e9bf84f3b7a35d3a120957cc82f",
+          :@type=>"person",
+          :name=>"person name"
         }, {
-          :@id => "_:8aa0b2df8dcb13c05c31c6a3460f991b",
+          :@id => "_:3b6f957643cc50ae52d280c7991ad465",
           :@type => "creator",
           agent: {
-            :@id => "_:0322c6196c72906c4c0d30904f257cb3",
+            :@id => "_:0e984e9bf84f3b7a35d3a120957cc82f",
             :@type => "person"
           },
           creative_work: {
-            :@id => "_:b80bb7740288fda1f201890375a60c8f",
+            :@id => "_:07a28694bee83e0c13ef065289727fa9",
             :@type => "CreativeWork"
           }
         }
@@ -61,7 +61,7 @@ describe ShareNotify::Graph do
         :@type => "WorkIdentifier",
         uri: "http://example.com/",
         creative_work: {
-          :@id => "_:b80bb7740288fda1f201890375a60c8f",
+          :@id => "_:07a28694bee83e0c13ef065289727fa9",
           :@type => "CreativeWork"
         }
       }
@@ -78,14 +78,14 @@ describe ShareNotify::Graph do
           :@type => "Tag",
           name: "tag1"
         }, {
-          :@id => "_:c61ef97754a0d8570dc5077e1bc270fa",
+          :@id => "_:77b55fbf0ee62769ec7aa7587557b60a",
           :@type => "ThroughTags",
           tag: {
             :@id => "_:e32f94dc18d0c5b62f364c177484172a",
             :@type => "Tag"
           },
           creative_work: {
-            :@id => "_:b80bb7740288fda1f201890375a60c8f",
+            :@id => "_:07a28694bee83e0c13ef065289727fa9",
             :@type => "CreativeWork"
           }
         }, {
@@ -93,14 +93,14 @@ describe ShareNotify::Graph do
           :@type => "Tag",
           name: "tag2"
         }, {
-          :@id => "_:b14b75726b0e1c461f6ed020e914b8c8",
+          :@id => "_:c6a2b0390f4a1edc79995598806f44f5",
           :@type => "ThroughTags",
           tag: {
             :@id => "_:15a70ba2e0026a8eee02a812f81e1c31",
             :@type => "Tag"
           },
           creative_work: {
-            :@id => "_:b80bb7740288fda1f201890375a60c8f",
+            :@id => "_:07a28694bee83e0c13ef065289727fa9",
             :@type => "CreativeWork"
           }
         }
