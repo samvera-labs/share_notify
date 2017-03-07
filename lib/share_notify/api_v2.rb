@@ -8,10 +8,9 @@ class ShareNotify::ApiV2
 
   base_uri ShareNotify.config.fetch('host', 'https://staging.osf.io')
 
-  # @param [String] token is optional but some actions will not be successful without it
-  def initialize(_token = nil)
+  def initialize
     @headers = {
-      'Authorization' => "Bearer #{ShareNotify.config.fetch('token', nil)}",
+      'Authorization' => "Bearer #{ShareNotify.config.fetch('token')}",
       'Content-Type'  => 'application/vnd.api+json'
     }
   end
