@@ -70,6 +70,7 @@ Method          | Description
                 | .name, etc..(from share)
 `.uris.canonicalUri` | the canonical URI identifying the work
 `.tags`         | list of tags for this item. is a list of strings
+`.extra`         | the extra as a hash
 `.is_deleted`   | true if this item is to be deleted from SHARE
 
 
