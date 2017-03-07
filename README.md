@@ -44,10 +44,34 @@ First, create a `PushDocument` with the required metadata:
     >  document.valid?
     => true
 
-Then send the document to Share using the `API` class:
+(In reality, any object that conforms to the PushDocument interface will work).
+Then send the document the Share Push-Gateway using the `ApiV2` class:
 
-    api = ShareNotify::API.new
-    api.post(document.to_share.to_json)
+    api = ShareNotify::ApiV2.new
+    api.upload_record(document)
+
+#### Push Document Metadata
+
+The `PushDocument` should supply the following fields.
+
+Method          | Description
+----------------|------------
+`.title`        | the title as a string
+`.rights`       | the usage rights, as a string
+`.description`  | the description, as a string
+`.languages`    | the language the document is in, as a list of strings
+`.date_published` | the date the document was published, as string?
+`.providerUpdatedDateTime` | the modified date of this record
+`.type`         | the type of item this is. Defaults to "CreativeWork"
+`.related_agents` | any authors or other people related to the work
+                | is list of hashes with the fields
+                | .type - ?
+                | .agent_type - ?
+                | .name, etc..(from share)
+`.uris.canonicalUri` | the canonical URI identifying the work
+`.tags`         | list of tags for this item. is a list of strings
+`.is_deleted`   | true if this item is to be deleted from SHARE
+
 
 ### Deleting Data
 
@@ -58,8 +82,8 @@ document should be delete from the Search API:
     >  document.title = "Some Title"
     >  document.add_contributor(name: "My Name", email: "myemail@example.com")
     >  document.delete
-    >  api = ShareNotify::API.new
-    >  api.post(document.to_share.to_json)
+    >  api = ShareNotify::ApiV2.new
+    >  api.upload_record(document)
 
 ### Querying
 

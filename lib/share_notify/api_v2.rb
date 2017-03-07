@@ -25,6 +25,11 @@ class ShareNotify::ApiV2
     @response = with_timeout { self.class.post(api_data_point, body: body, headers: headers) }
   end
 
+  def upload_record(push_document)
+    body = Graph.new(push_document).to_share_v2.to_json
+    post(body)
+  end
+
   # @return [HTTParty::Response]
   def search(query)
     @response = with_timeout { self.class.get(api_search_point, query: { q: query }) }

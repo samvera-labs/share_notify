@@ -5,7 +5,7 @@ module ShareNotify
                 :push_doc
 
     def initialize(push_doc)
-      @id = calc_id("id")
+      @id = calc_id("id") # should this be something besides the string "id"?
       @type = push_doc.type || 'CreativeWork'
       @push_doc = push_doc
     end
