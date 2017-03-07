@@ -115,6 +115,18 @@ describe ShareNotify::PushDocument do
     end
   end
 
+  describe '#extra' do
+    context '@param is a hash' do
+      subject { build(:document, extra: {funding: 'funding notes'}) }
+      its(:extra) { is_expected.to eq({funding: 'funding notes'}) }
+    end
+
+    context '@param is not a hash' do
+      subject { build(:document, extra: 'funding notes') }
+      its(:languages) { is_expected.to be_nil }
+    end
+  end
+
   context 'with complete documents' do
     subject { JSON.parse(example.to_share.to_json) }
     describe '#to_share' do

@@ -10,6 +10,7 @@ module ShareNotify
                 :languages,
                 :tags,
                 :related_agents,
+                :extra,
                 :otherProperties
     attr_accessor :title,
                   :description,
@@ -75,6 +76,12 @@ module ShareNotify
         return false unless agent.keys.include?(:agent_type) && agent.keys.include?(:type)&& agent.keys.include?(:name)
       end
       @related_agents = related_agents
+    end
+
+    # @param [Hash] extra 
+    def extra=(extra)
+      return false unless extra.is_a?(Hash)
+      @extra = extra
     end
 
     def to_share

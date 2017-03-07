@@ -23,7 +23,8 @@ describe ShareNotify::Graph do
                    :@type => "CreativeWork",
                    title: "V2 title",
                    language:  "English",
-                   date_updated:  "1990-12-12T07:12:12Z" }]
+                   date_updated:  "1990-12-12T07:12:12Z",
+                   extra: {funding: 'funding notes'}}]
       expect(sub.creative_work).to eq(results)
     end
   end

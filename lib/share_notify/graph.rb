@@ -25,6 +25,7 @@ module ShareNotify
       add_language_property(creative_work, :language, push_doc.languages)
       add_property(creative_work, :date_published, push_doc.date_published)
       add_property(creative_work, :date_updated, push_doc.providerUpdatedDateTime)
+      add_property(creative_work, :extra, push_doc.extra)
 
       [creative_work]
     end
