@@ -21,7 +21,7 @@ module ShareNotify
       add_property(creative_work, :rights, push_doc.rights)
       add_property(creative_work, :title, push_doc.title)
       add_property(creative_work, :description, push_doc.description)
-      # convert v1 array to v2 string type for laguage
+      # convert v1 array to v2 string type for language
       add_language_property(creative_work, :language, push_doc.languages)
       add_property(creative_work, :date_published, push_doc.date_published)
       add_property(creative_work, :date_updated, push_doc.providerUpdatedDateTime)

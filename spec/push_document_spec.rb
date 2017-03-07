@@ -117,8 +117,8 @@ describe ShareNotify::PushDocument do
 
   describe '#extra' do
     context '@param is a hash' do
-      subject { build(:document, extra: {funding: 'funding notes'}) }
-      its(:extra) { is_expected.to eq({funding: 'funding notes'}) }
+      subject { build(:document, extra: { funding: 'funding notes' }) }
+      its(:extra) { is_expected.to eq(funding: 'funding notes') }
     end
 
     context '@param is not a hash' do

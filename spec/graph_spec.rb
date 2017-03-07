@@ -18,13 +18,12 @@ describe ShareNotify::Graph do
   describe '#creative_work' do
     it "returns expected creative_work array" do
       sub = build(:document_v2)
-
       results = [{ :@id => sub.id,
                    :@type => "CreativeWork",
                    title: "V2 title",
                    language:  "English",
                    date_updated:  "1990-12-12T07:12:12Z",
-                   extra: {funding: 'funding notes'}}]
+                   extra: { funding: 'funding notes' } }]
       expect(sub.creative_work).to eq(results)
     end
   end
@@ -34,9 +33,9 @@ describe ShareNotify::Graph do
       sub = build(:document_v2)
       results = [
         {
-          :@id=>"_:0e984e9bf84f3b7a35d3a120957cc82f",
-          :@type=>"person",
-          :name=>"person name"
+          :@id => "_:0e984e9bf84f3b7a35d3a120957cc82f",
+          :@type => "person",
+          :name => "person name"
         }, {
           :@id => "_:3b6f957643cc50ae52d280c7991ad465",
           :@type => "creator",
