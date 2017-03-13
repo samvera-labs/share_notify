@@ -99,10 +99,9 @@ module ShareNotify
     # There is no way to inspect the @properties attribute in otherProperties
     # so we settle for checking whether otherProperties contains any kind of "status".
     # A boolean attribute would be simpler.
-    def is_deleted
-      puts otherProperties.inspect
-      return !otherProperties.nil? && otherProperties.any? do |p|
-        p.name == "status"    # && p.property == {status: ["deleted"]}
+    def deleted?
+      !otherProperties.nil? && otherProperties.any? do |p|
+        p.name == "status" # && p.property == {status: ["deleted"]}
       end
     end
 

@@ -27,7 +27,7 @@ module ShareNotify
       add_property(creative_work, :date_updated, push_doc.providerUpdatedDateTime)
       add_property(creative_work, :extra, push_doc.extra)
 
-      creative_work[:is_deleted] = true if push_doc.is_deleted
+      creative_work[:is_deleted] = true if push_doc.deleted?
 
       [creative_work]
     end
