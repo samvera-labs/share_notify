@@ -84,12 +84,26 @@ module ShareNotify
       @extra = extra
     end
 
+    # return data formatted for V1 of the SHARE API.
     def to_share
       { jsonData: self }
     end
 
     def delete
       @otherProperties = [OtherProperty.new("status", status: ["deleted"])]
+    end
+
+    # has this object been marked as deleted?
+    #
+    # This crazy check is to maintain V1 compatibility.
+    # There is no way to inspect the @properties attribute in otherProperties
+    # so we settle for checking whether otherProperties contains any kind of "status".
+    # A boolean attribute would be simpler.
+    def is_deleted
+      puts otherProperties.inspect
+      return !otherProperties.nil? && otherProperties.any? do |p|
+        p.name == "status"    # && p.property == {status: ["deleted"]}
+      end
     end
 
     class ShareUri
@@ -106,6 +120,7 @@ module ShareNotify
 
       def initialize(*args)
         @name = args.shift
+        # n.b. the attr_reader is for :property, not properties
         @properties = args.shift
       end
     end

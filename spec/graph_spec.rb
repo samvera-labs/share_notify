@@ -28,6 +28,21 @@ describe ShareNotify::Graph do
     end
   end
 
+  describe '#is_deleted' do
+    it "sets is_deleted flag when deleted" do
+      sub = build(:document_v2)
+      sub.push_doc.delete
+      results = [{ :@id => sub.id,
+                   :@type => "CreativeWork",
+                   title: "V2 title",
+                   language:  "English",
+                   is_deleted: true,
+                   date_updated:  "1990-12-12T07:12:12Z",
+                   extra: { funding: 'funding notes' } }]
+      expect(sub.creative_work).to eq(results)
+    end
+  end
+
   describe '#related_agents' do
     it "returns the expected related_agents array" do
       sub = build(:document_v2)
