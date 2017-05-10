@@ -2,9 +2,11 @@ require 'share_notify/version'
 require 'active_support'
 require 'active_support/core_ext'
 require 'httparty'
+require 'yaml'
 
 module ShareNotify
   autoload :API,            'share_notify/api'
+  autoload :ApiV2,          'share_notify/api_v2'
   autoload :Metadata,       'share_notify/metadata'
   autoload :PushDocument,   'share_notify/push_document'
   autoload :SearchResponse, 'share_notify/search_response'
