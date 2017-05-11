@@ -5,5 +5,4 @@ gemspec
 
 gem 'byebug', require: false
 gem 'rubocop', require: false
-# Removed until https://github.com/nevir/rubocop-rspec/issues/78 is resolved
-#gem 'rubocop-rspec', require: false
+gem 'rubocop-rspec', require: false
