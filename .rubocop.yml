@@ -1,5 +1,6 @@
 AllCops:
   DisplayCopNames: true
+  TargetRubyVersion: 2.1
   Include:
     - '**/Rakefile'
 
@@ -55,15 +56,12 @@ Style/WordArray:
   Enabled: false
 
 Style/SymbolArray:
-  Enabled: false
+  EnforcedStyle: brackets
 
 Style/RegexpLiteral:
   Enabled: false
 
 Style/StringLiterals:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/RedundantFreeze:
