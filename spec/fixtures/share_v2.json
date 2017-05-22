@@ -1,0 +1,79 @@
+{
+  "data": {
+    "type": "NormalizedData",
+    "attributes": {
+      "data": {
+        "@graph": [
+          {
+            "@id": "_:07a28694bee83e0c13ef065289727fa9",
+            "@type": "CreativeWork",
+            "title": "V2 title",
+            "language": "English",
+            "date_updated": "1990-12-12T07:12:12Z", 
+            "extra": { "funding": "funding notes" }
+          },
+          {
+            "@id": "_:da8fe8fc47e18b435d6fe52ce7376f2d",
+            "@type": "WorkIdentifier",
+            "uri": "http://example.com/",
+            "creative_work": {
+              "@id": "_:07a28694bee83e0c13ef065289727fa9",
+              "@type": "CreativeWork"
+            }
+          },
+          {
+            "@id": "_:e32f94dc18d0c5b62f364c177484172a",
+            "@type": "Tag",
+            "name": "tag1"
+          },
+          {
+            "@id": "_:77b55fbf0ee62769ec7aa7587557b60a",
+            "@type": "ThroughTags",
+            "tag": {
+              "@id": "_:e32f94dc18d0c5b62f364c177484172a",
+              "@type": "Tag"
+            },
+            "creative_work": {
+              "@id": "_:07a28694bee83e0c13ef065289727fa9",
+              "@type": "CreativeWork"
+            }
+          },
+          {
+            "@id": "_:15a70ba2e0026a8eee02a812f81e1c31",
+            "@type": "Tag",
+            "name": "tag2"
+          },
+          {
+            "@id": "_:c6a2b0390f4a1edc79995598806f44f5",
+            "@type": "ThroughTags",
+            "tag": {
+              "@id": "_:15a70ba2e0026a8eee02a812f81e1c31",
+              "@type": "Tag"
+            },
+            "creative_work": {
+              "@id": "_:07a28694bee83e0c13ef065289727fa9",
+              "@type": "CreativeWork"
+            }
+          },
+          {
+            "@id": "_:0e984e9bf84f3b7a35d3a120957cc82f",
+            "@type": "person",
+            "name": "person name"
+          },
+          {
+            "@id": "_:3b6f957643cc50ae52d280c7991ad465",
+            "@type": "creator",
+            "agent": {
+              "@id": "_:0e984e9bf84f3b7a35d3a120957cc82f",
+              "@type": "person"
+            },
+            "creative_work": {
+              "@id": "_:07a28694bee83e0c13ef065289727fa9",
+              "@type": "CreativeWork"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

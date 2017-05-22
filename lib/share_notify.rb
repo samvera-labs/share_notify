@@ -2,12 +2,15 @@ require 'share_notify/version'
 require 'active_support'
 require 'active_support/core_ext'
 require 'httparty'
+require 'yaml'
 
 module ShareNotify
   autoload :API,            'share_notify/api'
+  autoload :ApiV2,          'share_notify/api_v2'
   autoload :Metadata,       'share_notify/metadata'
   autoload :PushDocument,   'share_notify/push_document'
   autoload :SearchResponse, 'share_notify/search_response'
+  autoload :Graph,          'share_notify/graph'
   autoload :NotificationQueryService, 'share_notify/notification_query_service'
 
   class << self
@@ -15,7 +18,7 @@ module ShareNotify
       if value.nil? || value.is_a?(Hash)
         @config = value
       elsif value.is_a?(String)
-        @config = YAML.load(File.read(value))
+        @config = YAML.safe_load(File.read(value))
       else
         fail InitializationError, "Unrecognized configuration: #{value.inspect}"
       end
