@@ -6,7 +6,7 @@ class ShareNotify::ApiV2
 
   attr_reader :headers, :response
 
-  base_uri ShareNotify.config.fetch('host', 'https://staging.osf.io')
+  base_uri ShareNotify.config.fetch('host', 'https://staging-share.osf.io/')
 
   def initialize
     @headers = {

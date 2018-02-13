@@ -13,10 +13,8 @@
     },
     "otherProperties": [
       {
-        "name": "status",
-        "properties": {
-          "status": ["deleted"]
-        }
+        "name": "is_deleted",
+        "properties": true
       }
     ]
   }

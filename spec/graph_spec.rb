@@ -23,7 +23,8 @@ describe ShareNotify::Graph do
                    title: "V2 title",
                    language:  "English",
                    date_updated:  "1990-12-12T07:12:12Z",
-                   extra: { funding: 'funding notes' } }]
+                   extra: { funding: 'funding notes' },
+                   is_deleted: false }]
       expect(sub.creative_work).to eq(results)
     end
   end

@@ -90,7 +90,7 @@ module ShareNotify
     end
 
     def delete
-      @otherProperties = [OtherProperty.new("status", status: ["deleted"])]
+      @otherProperties = [OtherProperty.new("is_deleted", true)]
     end
 
     # has this object been marked as deleted?
@@ -101,7 +101,7 @@ module ShareNotify
     # A boolean attribute would be simpler.
     def deleted?
       !otherProperties.nil? && otherProperties.any? do |p|
-        p.name == "status" # && p.property == {status: ["deleted"]}
+        p.name == "is_deleted"
       end
     end
 
