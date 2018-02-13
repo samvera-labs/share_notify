@@ -53,34 +53,34 @@ module ShareNotify
 
     # @param [Hash] publisher containing required keys for publisher
     def publisher=(publisher)
-      return false unless publisher.keys.include?(:name)
+      return unless publisher.keys.include?(:name)
       @publisher = publisher
     end
 
     # @param [Array<String>] languages list of languages
     def languages=(languages)
-      return false unless languages.is_a?(Array)
+      return unless languages.is_a?(Array)
       @languages = languages
     end
 
     # @param [Array<String>] tags list of tags
     def tags=(tags)
-      return false unless tags.is_a?(Array)
+      return unless tags.is_a?(Array)
       @tags = tags
     end
 
     # @param [Array<String>] related_agents list of agents
     def related_agents=(related_agents)
-      return false unless related_agents.is_a?(Array)
-      related_agents.each do |agent|
-        return false unless agent.keys.include?(:agent_type) && agent.keys.include?(:type) && agent.keys.include?(:name)
+      return unless related_agents.is_a?(Array)
+      return unless related_agents.all? do |agent|
+        agent.keys.include?(:agent_type) && agent.keys.include?(:type) && agent.keys.include?(:name)
       end
       @related_agents = related_agents
     end
 
     # @param [Hash] extra
     def extra=(extra)
-      return false unless extra.is_a?(Hash)
+      return unless extra.is_a?(Hash)
       @extra = extra
     end
 

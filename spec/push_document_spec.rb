@@ -37,7 +37,7 @@ describe ShareNotify::PushDocument do
 
   describe '#updated=' do
     context 'with a DateTime' do
-      subject { build(:document, updated: DateTime.new(1990, 12, 12, 12, 12, 12, '+5')) }
+      subject { build(:document, updated: Time.new(1990, 12, 12, 12, 12, 12, '+05:00')) }
       its(:updated) { is_expected.to eq('1990-12-12T07:12:12Z') }
     end
   end

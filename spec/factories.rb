@@ -4,11 +4,11 @@ FactoryGirl.define do
     initialize_with { new(uri) }
 
     factory :document_with_datetime do
-      initialize_with { new(uri, DateTime.new(1990, 12, 12, 12, 12, 12, '+5')) }
+      initialize_with { new(uri, Time.new(1990, 12, 12, 12, 12, 12, '+05:00')) }
     end
 
     factory :document_with_date do
-      initialize_with { new(uri, Date.today) }
+      initialize_with { new(uri, Time.now) }
     end
 
     factory :valid_document do
@@ -20,7 +20,7 @@ FactoryGirl.define do
       uri     'http://example.com/document1'
       version 'someID'
       title   'Interesting research'
-      updated DateTime.new(2014, 12, 12)
+      updated Time.new(2014, 12, 12, 0, 0, 0, "+00:00")
       after(:build) do |d|
         d.add_contributor(name: 'Roger Movies Ebert', email: 'rogerebert@example.com')
         d.add_contributor(name: 'Roger Madness Ebert')
@@ -33,7 +33,7 @@ FactoryGirl.define do
   end
 
   factory :document_v2, class: ShareNotify::Graph do
-    push_doc = ShareNotify::PushDocument.new("http://example.com/", DateTime.new(1990, 12, 12, 12, 12, 12, '+5'))
+    push_doc = ShareNotify::PushDocument.new("http://example.com/", Time.new(1990, 12, 12, 12, 12, 12, '+05:00'))
     push_doc.title = "V2 title"
     push_doc.languages = ["English"]
     push_doc.tags = ["tag1", "tag2"]
