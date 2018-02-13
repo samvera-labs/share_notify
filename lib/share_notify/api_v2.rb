@@ -26,7 +26,7 @@ class ShareNotify::ApiV2
   end
 
   def upload_record(push_document)
-    body = ShareNofity::Graph.new(push_document).to_share_v2.to_json
+    body = ShareNotify::Graph.new(push_document).to_share_v2.to_json
     post(body)
   end
 
