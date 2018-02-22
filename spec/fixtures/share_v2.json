@@ -10,7 +10,8 @@
             "title": "V2 title",
             "language": "English",
             "date_updated": "1990-12-12T07:12:12Z", 
-            "extra": { "funding": "funding notes" }
+            "extra": { "funding": "funding notes" },
+            "is_deleted": false
           },
           {
             "@id": "_:da8fe8fc47e18b435d6fe52ce7376f2d",
