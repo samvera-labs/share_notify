@@ -123,8 +123,13 @@ describe ShareNotify::PushDocument do
 
     context '@param is not a hash' do
       subject { build(:document, extra: 'funding notes') }
-      its(:languages) { is_expected.to be_nil }
+      its(:extra) { is_expected.to be_nil }
     end
+  end
+
+  describe '#category' do
+    subject { build(:document, category: 'other') }
+    its(:category) { is_expected.to eq('other') }
   end
 
   context 'with complete documents' do
@@ -137,6 +142,15 @@ describe ShareNotify::PushDocument do
     describe '#delete' do
       let(:example) { build(:delete_document) }
       let(:fixture) { JSON.parse(File.read(File.join(fixture_path, 'share_delete.json'))) }
+      it { is_expected.to eq(fixture) }
+    end
+  end
+
+  context '#to_json' do
+    subject { JSON.parse(example.to_json) }
+    describe '#to_share' do
+      let(:example) { build(:share_document) }
+      let(:fixture) { JSON.parse(File.read(File.join(fixture_path, 'share_v2_node.json'))) }
       it { is_expected.to eq(fixture) }
     end
   end

@@ -38,7 +38,7 @@ class ShareNotify::ApiV2
   private
 
     def api_data_point
-      '/api/v2/normalizeddata/'
+      ShareNotify.config.fetch('api_data_point', '/api/v2/normalizeddata/')
     end
 
     def api_search_point

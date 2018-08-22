@@ -16,7 +16,8 @@ module ShareNotify
                   :description,
                   :type,
                   :date_published,
-                  :rights
+                  :rights,
+                  :category
 
     # @param [String] uri that identifies the resource
     def initialize(uri, datetime = nil)
@@ -87,6 +88,11 @@ module ShareNotify
     # return data formatted for V1 of the SHARE API.
     def to_share
       { jsonData: self }
+    end
+
+    #v2 json format
+    def to_json
+      "{\"data\": {\"type\": \"nodes\", \"attributes\": #{super}}}"
     end
 
     def delete
