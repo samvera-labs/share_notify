@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 
 module ShareNotify
@@ -47,13 +49,13 @@ module ShareNotify
 
     # @param [Hash] contributor containing required keys for description
     def add_contributor(contributor)
-      return false unless contributor.keys.include?(:name)
+      return false unless contributor.key?(:name)
       @contributors << contributor
     end
 
     # @param [Hash] publisher containing required keys for publisher
     def publisher=(publisher)
-      return unless publisher.keys.include?(:name)
+      return unless publisher.key?(:name)
       @publisher = publisher
     end
 
@@ -73,7 +75,7 @@ module ShareNotify
     def related_agents=(related_agents)
       return unless related_agents.is_a?(Array)
       return unless related_agents.all? do |agent|
-        agent.keys.include?(:agent_type) && agent.keys.include?(:type) && agent.keys.include?(:name)
+        agent.key?(:agent_type) && agent.key?(:type) && agent.key?(:name)
       end
       @related_agents = related_agents
     end

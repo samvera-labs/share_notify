@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShareNotify::ApiV2
   include HTTParty
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :document, class: ShareNotify::PushDocument do
     uri "http://example.com/fake-uri"
@@ -27,7 +29,9 @@ FactoryGirl.define do
       end
 
       factory :delete_document do
-        after(:build, &:delete)
+        after(:build) do |d|
+          d.delete
+        end
       end
     end
   end
