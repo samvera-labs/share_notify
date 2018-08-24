@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'share_notify/notification_query_service'
 require 'support/vcr'

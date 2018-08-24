@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ShareNotify
   class Graph
     attr_reader :id,

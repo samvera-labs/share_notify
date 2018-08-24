@@ -1,8 +1,10 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: 2.1
+  TargetRubyVersion: 2.4
   Include:
-    - '**/Rakefile'
+    - '**/*.rb'
 
 Metrics/LineLength:
   Enabled: false
